@@ -13,24 +13,31 @@ import com.google.gson.Gson
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newstest.adapters.NewsListAdapter
 import com.example.newstest.common.AppConstants
+import com.example.newstest.common.Utility
 
 
 class MainActivity : AppCompatActivity() {
-
+    val TAG = MainActivity::class.java.simpleName
     val serverRequestHandler = ServerRequestHandler()
     val apiController = APIController(serverRequestHandler)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val mListRecyclerView = findViewById<RecyclerView>(R.id.rv_news_list)
 
-        apiController.get(ServerConstants.GET_NEWS_URL) { response ->
-            val newBaseResponse = Gson().fromJson(response.toString(), NewsBaseRespone::class.java)
-            val adapter = NewsListAdapter(newBaseResponse.rows)
-            mListRecyclerView.adapter = adapter
-            val actionBar = supportActionBar
-            actionBar?.title = if (!TextUtils.isEmpty(newBaseResponse?.title)) newBaseResponse?.title else AppConstants.DEFAULT_TITLE_TEXT
-            Log.d("server response", "papa")
+        if(Utility().isConnectedToInternet(this)) {
+            apiController.get(ServerConstants.GET_NEWS_URL) { response ->
+                val newBaseResponse = Gson().fromJson(response.toString(), NewsBaseRespone::class.java)
+                val adapter = NewsListAdapter(newBaseResponse.rows)
+                mListRecyclerView.adapter = adapter
+                val actionBar = supportActionBar
+                actionBar?.title =
+                    if (!TextUtils.isEmpty(newBaseResponse?.title)) newBaseResponse?.title else getString(R.string.default_app_title)
+            }
+        } else {
+            Log.d(TAG, "No network available")
+            Utility().showErrorAlert(this, getString(R.string.error_title), getString(R.string.error_internet_msg));
         }
     }
 }

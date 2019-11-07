@@ -36,8 +36,8 @@ class NewsListAdapter(val articleList: List<Rows>) : RecyclerView.Adapter<NewsLi
             val textViewTitle = itemView.findViewById(R.id.tv_news_title) as TextView
             val textViewDescription  = itemView.findViewById(R.id.tv_news_description) as TextView
             val networkImageView  = itemView.findViewById(R.id.iv_news_thumb) as NetworkImageView
-            textViewTitle.text = if (article?.title != null) article?.title else AppConstants.PLACEHOLDER_NO_TITLE
-           textViewDescription.text = if (article?.description != null) article?.description else AppConstants.PLACEHOLDER_NO_TITLE
+            textViewTitle.text = if (article?.title != null) article?.title else itemView.context.getString(R.string.placeholder_no_news_title)
+           textViewDescription.text = if (article?.description != null) article?.description else itemView.context.getString(R.string.placeholder_no_news_title)
 
             if(!TextUtils.isEmpty(article?.imageHref))
                 networkImageView.setImageUrl(article.imageHref, NewsTestApplication.instance?.imageLoader)

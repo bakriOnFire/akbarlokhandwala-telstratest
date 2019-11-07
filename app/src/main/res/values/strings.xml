@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NewsTest</string>
+    <string name="error_title">Error</string>
+    <string name="error_internet_msg">No internet connection available</string>
+    <string name="default_app_title">Daily News</string>
+    <string name="placeholder_no_news_title">No Information Available</string>
+    <string name="placeholder_no_news_description">No Information Available</string>
+
 </resources>
