@@ -12,26 +12,24 @@
             android:padding="@dimen/constraintLayout_padding">
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:id="@+id/tv_news_title" app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintBottom_toTopOf="@+id/tv_news_description"
-                  app:layout_constraintRight_toLeftOf="@+id/iv_news_thumb"
+                  android:id="@+id/tv_country_info_title" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintBottom_toTopOf="@+id/tv_country_info_description"
+                  app:layout_constraintRight_toLeftOf="@+id/iv_country_info_thumb"
                   android:layout_marginBottom="@dimen/textView_bottom_margin"
-                  android:textSize="@dimen/list_title_textSize"
-                  android:text="Title"/>
+                  android:textSize="@dimen/list_title_textSize"/>
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:id="@+id/tv_news_description"
-                  android:text="Description"
+                  android:id="@+id/tv_country_info_description"
                   app:layout_constraintStart_toStartOf="parent"
                   android:layout_marginRight="@dimen/textView_desc_right_margin"
                   android:textSize="@dimen/list_description_textSize"
-                  app:layout_constraintTop_toBottomOf="@id/tv_news_title"/>
+                  app:layout_constraintTop_toBottomOf="@id/tv_country_info_title"/>
 
-        <com.android.volley.toolbox.NetworkImageView
+        <ImageView
                 android:layout_width="@dimen/imageView_thumbnail_width"
                 android:layout_height="@dimen/imageView_thumbnail_height"
-                android:id="@+id/iv_news_thumb" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_news_title"/>
+                android:id="@+id/iv_country_info_thumb" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_country_info_title"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

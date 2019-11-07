@@ -1,15 +1,24 @@
-package com.example.newstest.common
+package com.example.countryinfo.common
 
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkInfo
-import android.os.Build
 
+/**
+ *
+ * Utility class for holding general purpose helper functions
+ *
+ */
 class Utility {
 
+    /**
+     *
+     * Check if the device is connected to internet or not
+     * @param context - Application or activity context
+     *
+     */
     fun isConnectedToInternet(context: Context) : Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
@@ -20,6 +29,15 @@ class Utility {
         return false;
     }
 
+    /**
+     *
+     * Show an error alert with single button that will dismiss the currently running activity
+     *
+     * @param context - Application or activity context
+     * @param title - Display title for alert dialog
+     * @param message - Display message for alert dialog
+     *
+     */
     fun showErrorAlert(context: Context, title: String, message: String) {
         val builder = AlertDialog.Builder(context)
         //set title for alert dialog

@@ -1,19 +1,25 @@
-package com.example.newstest.common.network
+package com.example.countryinfo.common.network
 
 import android.util.Log
-import com.android.volley.AuthFailureError
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.VolleyLog
+import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
-import com.example.newstest.NewsTestApplication
-import com.example.newstest.interfaces.ServerRequestHandlerInterface
+import com.example.countryinfo.CountryInfoApplication
+import com.example.countryinfo.interfaces.ServerRequestHandlerInterface
 import org.json.JSONObject
+
 
 class ServerRequestHandler : ServerRequestHandlerInterface {
     val TAG = ServerRequestHandler::class.java.simpleName
 
+    /**
+     *
+     * Create a volley get request and pass the response back
+     * @param path - Url path to get data from
+     * @param completionHandler - Provide response as a callback to the calling function
+     *
+     */
     override fun get(path: String, completionHandler: (response: JSONObject?) -> Unit) {
+        // Json request to get data from server
         val jsonObjReq = object : JsonObjectRequest(Request.Method.GET, path, null,
             Response.Listener<JSONObject> { response ->
                 Log.d(TAG, "/post request OK! Response: $response")
@@ -31,6 +37,7 @@ class ServerRequestHandler : ServerRequestHandlerInterface {
             }
         }
 
-        NewsTestApplication.instance?.addToRequestQueue(jsonObjReq, TAG)
+        // Add the jsonRequest to volley's request queue
+        CountryInfoApplication.instance?.addToRequestQueue(jsonObjReq, TAG)
     }
 }
