@@ -38,7 +38,7 @@ class Utility {
      * @param message - Display message for alert dialog
      *
      */
-    fun showErrorAlert(context: Context, title: String, message: String) {
+    fun showErrorAlert(context: Context, title: String, message: String, onPositiveButtonClicked: () -> Unit) {
         val builder = AlertDialog.Builder(context)
         //set title for alert dialog
         builder.setTitle(title)
@@ -48,8 +48,7 @@ class Utility {
 
         //performing positive action
         builder.setPositiveButton("Ok"){dialogInterface, which ->
-            if(context is Activity)
-                context.finish()
+            onPositiveButtonClicked()
         }
 
         // Create the AlertDialog

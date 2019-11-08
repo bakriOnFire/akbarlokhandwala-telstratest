@@ -10,9 +10,11 @@ import com.example.countryinfo.common.network.ServerRequestHandler
 import com.example.countryinfo.model.CountryInfoBaseResponse
 import com.google.gson.Gson
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.countryinfo.adapters.CountryInfoListAdapter
 import com.example.countryinfo.common.Utility
 import com.example.newstest.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  *
@@ -28,6 +30,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Set all the listeners for this activity in this function
+        setListeners()
+
+        // Get country info from server and bind it to recycler view
+        getCountryInfo()
+    }
+
+    /**
+     * Set event listeners for this activity
+     */
+    private fun setListeners() {
+        val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
+
+        //Set swipe to refresh listener when the user pulls to refresh
+        swipeContainer.setOnRefreshListener {
+            // Get all data on refresh
+            getCountryInfo()
+            swipeContainer.isRefreshing = false
+        }
+    }
+
+    /**
+     * Fetch country info from server and bind it to recycler view's adapter
+     */
+    private fun getCountryInfo() {
         val mListRecyclerView = findViewById<RecyclerView>(R.id.rv_country_info_list)
 
         // Check for internet connectivity before making a server request
@@ -46,7 +74,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             Log.d(TAG, "No network available")
             Utility()
-                .showErrorAlert(this, getString(R.string.error_title), getString(R.string.error_internet_msg));
+                .showErrorAlert(this, getString(R.string.error_title), getString(R.string.error_internet_msg)) {
+                    finish()
+                }
         }
     }
 }
