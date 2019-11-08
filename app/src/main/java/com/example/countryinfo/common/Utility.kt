@@ -26,7 +26,7 @@ class Utility {
             val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
             return activeNetwork?.isConnectedOrConnecting == true
         }
-        return false;
+        return false
     }
 
     /**
