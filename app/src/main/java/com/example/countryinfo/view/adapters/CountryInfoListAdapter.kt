@@ -1,4 +1,4 @@
-package com.example.countryinfo.adapters
+package com.example.countryinfo.view.adapters
 
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -27,6 +27,7 @@ class CountryInfoListAdapter : RecyclerView.Adapter<CountryInfoListAdapter.ViewH
 
     fun setCountryInfoList(articleList: List<Rows>) {
         _articleList = articleList
+        notifyDataSetChanged()
     }
 
     //binding the data to the list

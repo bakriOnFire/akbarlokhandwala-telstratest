@@ -5,5 +5,7 @@
     <string name="default_app_title">Daily News</string>
     <string name="placeholder_no_news_title">No Information Available</string>
     <string name="placeholder_no_news_description">No Information Available</string>
+    <string name="list_no_data_available">No data</string>
+    <string name="list_no_internet_connection">No internet connection available. Please connect to a network and pull down on the screen to get country info.</string>
 
 </resources>

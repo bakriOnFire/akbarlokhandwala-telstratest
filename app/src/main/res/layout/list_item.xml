@@ -15,14 +15,14 @@
                   android:id="@+id/tv_country_info_title" app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintBottom_toTopOf="@+id/tv_country_info_description"
                   app:layout_constraintRight_toLeftOf="@+id/iv_country_info_thumb"
-                  android:layout_marginBottom="@dimen/textView_bottom_margin"
-                  android:textSize="@dimen/list_title_textSize"/>
+                  style="@style/TextViewHeaderStyle"
+                  android:layout_marginBottom="@dimen/textView_bottom_margin"/>
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:id="@+id/tv_country_info_description"
                   app:layout_constraintStart_toStartOf="parent"
                   android:layout_marginRight="@dimen/textView_desc_right_margin"
-                  android:textSize="@dimen/list_description_textSize"
+                  style="@style/TextViewDescriptionStyle"
                   app:layout_constraintTop_toBottomOf="@id/tv_country_info_title"/>
 
         <ImageView

@@ -1,6 +1,5 @@
 package com.example.countryinfo.model
 
-import androidx.annotation.Nullable
 import com.google.gson.annotations.SerializedName
 
 data class CountryInfoBaseResponse(
