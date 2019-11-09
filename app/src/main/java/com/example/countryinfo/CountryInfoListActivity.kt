@@ -9,12 +9,10 @@ import com.example.countryinfo.common.network.ServerConstants
 import com.example.countryinfo.common.network.ServerRequestHandler
 import com.example.countryinfo.model.CountryInfoBaseResponse
 import com.google.gson.Gson
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.countryinfo.adapters.CountryInfoListAdapter
 import com.example.countryinfo.common.Utility
 import com.example.newstest.R
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_country_info.*
 
 /**
  *
@@ -22,14 +20,14 @@ import kotlinx.android.synthetic.main.activity_main.*
  * This class loads the country info from server and displays it in a recycler view
  *
  */
-class MainActivity : AppCompatActivity() {
-    val TAG = MainActivity::class.java.simpleName
-    val serverRequestHandler = ServerRequestHandler()
-    val apiController = APIController(serverRequestHandler)
+class CountryInfoListActivity : AppCompatActivity() {
+
+    val TAG = CountryInfoListActivity::class.java.simpleName
+    val adapter = CountryInfoListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_country_info)
 
         // Set all the listeners for this activity in this function
         setListeners()
@@ -42,7 +40,6 @@ class MainActivity : AppCompatActivity() {
      * Set event listeners for this activity
      */
     private fun setListeners() {
-        val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
 
         //Set swipe to refresh listener when the user pulls to refresh
         swipeContainer.setOnRefreshListener {
@@ -56,15 +53,23 @@ class MainActivity : AppCompatActivity() {
      * Fetch country info from server and bind it to recycler view's adapter
      */
     private fun getCountryInfo() {
-        val mListRecyclerView = findViewById<RecyclerView>(R.id.rv_country_info_list)
 
         // Check for internet connectivity before making a server request
         if(Utility().isConnectedToInternet(this)) {
+
+            val serverRequestHandler = ServerRequestHandler()
+            val apiController = APIController(serverRequestHandler)
+
             // Get the server data and initialize recycler adapter to display country info
             apiController.get(ServerConstants.GET_NEWS_URL) { response ->
                 val newBaseResponse = Gson().fromJson(response.toString(), CountryInfoBaseResponse::class.java)
-                val adapter = CountryInfoListAdapter(newBaseResponse.rows)
-                mListRecyclerView.adapter = adapter
+
+                // Assign custom adapter to recycler view
+                rv_country_info_list.adapter = adapter
+
+                // Set the received data into list adapter
+                adapter?.setCountryInfoList(newBaseResponse.rows)
+                adapter?.notifyDataSetChanged()
 
                 // Change action bar title with the title from server
                 val actionBar = supportActionBar

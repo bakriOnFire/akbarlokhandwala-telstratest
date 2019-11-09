@@ -6,7 +6,7 @@
         android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.countryinfo.MainActivity">
+        tools:context="com.example.countryinfo.CountryInfoListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_country_info_list"

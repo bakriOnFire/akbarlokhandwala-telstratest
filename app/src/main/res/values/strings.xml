@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewsTest</string>
+    <string name="app_name">Country Info</string>
     <string name="error_title">Error</string>
     <string name="error_internet_msg">No internet connection available</string>
     <string name="default_app_title">Daily News</string>
