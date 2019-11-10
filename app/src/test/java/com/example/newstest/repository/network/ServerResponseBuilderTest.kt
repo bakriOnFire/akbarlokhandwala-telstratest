@@ -5,6 +5,7 @@ import com.example.countryinfo.model.CountryInfoResponse
 import com.example.countryinfo.model.ServerResponse
 import com.example.countryinfo.repository.network.ServerResponseBuilder
 import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,8 +21,8 @@ class ServerResponseBuilderTest {
 
         val errorResponse = ServerResponseBuilder.create(exception)
 
-        val status = errorResponse.status.ordinal
-        assertThat<Int>(status, `is`(Status.ERROR.ordinal))
+        val status = errorResponse.status
+        assertThat<Status>(status, instanceOf(Status.Error::class.java))
 
         val errorMessage = errorResponse.message
         assertThat<String>(errorMessage, `is`("Request is null"))
@@ -33,8 +34,8 @@ class ServerResponseBuilderTest {
             .create(Response.success(CountryInfoResponse("About Canada", emptyList())))
 
 
-        val status = successResponse.status.ordinal
-        assertThat<Int>(status, `is`(Status.SUCCESS.ordinal))
+        val status = successResponse.status
+        assertThat<Status>(status, instanceOf(Status.Success::class.java))
 
         val successMessage = successResponse.message
         assertThat<String>(successMessage, `is`("success"))

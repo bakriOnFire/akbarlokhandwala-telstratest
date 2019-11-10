@@ -20,6 +20,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CountryInfoRepository {
 
     private val tag = CountryInfoRepository::class.java.simpleName
+    val retrofitClient = Retrofit.Builder()
+        .baseUrl(ServerConstants.GET_COUNTRY_INFO_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val service = retrofitClient.create(CountryInfoService::class.java)
 
     /**
      *
@@ -28,11 +34,7 @@ class CountryInfoRepository {
      *
      */
     fun getCountryInfoHttp(completionHandler: (response: ServerResponse?) -> Unit) {
-        val retrofitClient = Retrofit.Builder()
-            .baseUrl(ServerConstants.GET_COUNTRY_INFO_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofitClient.create(CountryInfoService::class.java)
+
         val call = service.getCountryInfoService()
         call.enqueue(object : Callback<CountryInfoResponse> {
             override fun onResponse(
