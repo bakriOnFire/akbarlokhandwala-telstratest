@@ -36,7 +36,7 @@ dependencies {
     implementation "androidx.cardview:cardview:$rootProject.cardViewVersion"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.swipeRefreshLayoutVersion"
 
-    //For image download
+    // For image download
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
@@ -48,12 +48,24 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
 
-    //Test Dependencies
+    //Android Test Dependencies
     androidTestImplementation "androidx.test:core:$rootProject.testCoreVersion"
     androidTestImplementation "androidx.test:core-ktx:$rootProject.testCoreVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.testJunitVersion"
-    androidTestImplementation "androidx.test.ext:junit-ktx:$rootProject.testJunitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testJunitXVersion"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$rootProject.testJunitXVersion"
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.testEspressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.testEspressoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.testMokitoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.testMokitoVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.archLifecycleVersion"
+
+    //Unit Test dependencies
+    testImplementation "org.mockito:mockito-core:$rootProject.testMokitoVersion"
+    testImplementation "org.mockito:mockito-inline:$rootProject.testMokitoVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.testMokitoKotlinVersion"
+    testImplementation "android.arch.core:core-testing:$rootProject.testCoreTestingVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.testMockServerVersion"
+    testImplementation "junit:junit:$rootProject.testJunitVersion"
+
 }

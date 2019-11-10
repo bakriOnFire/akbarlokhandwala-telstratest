@@ -7,6 +7,6 @@ package com.example.countryinfo.common
  */
 class ServerConstants {
     companion object {
-        const val GET_NEWS_URL = "https://dl.dropboxusercontent.com/"
+        const val GET_COUNTRY_INFO_URL = "https://dl.dropboxusercontent.com/"
     }
 }

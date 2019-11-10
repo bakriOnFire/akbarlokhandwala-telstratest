@@ -39,8 +39,12 @@ ext {
     retrofitVersion = '2.0.0'
 
     testCoreVersion = '1.2.1-alpha02'
-    testJunitVersion = '1.1.2-alpha02'
+    testJunitXVersion = '1.1.2-alpha02'
     testRunnerVersion = '1.3.0-alpha02'
     testEspressoVersion = '3.3.0-alpha02'
-
+    testMokitoVersion = '2.23.0'
+    testMokitoKotlinVersion = '2.0.0-RC3'
+    testCoreTestingVersion = '1.1.1'
+    testMockServerVersion = '3.8.0'
+    testJunitVersion = '4.12'
 }

@@ -7,9 +7,10 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.countryinfo.common.Status
 import com.example.countryinfo.view.adapters.CountryInfoListAdapter
 import com.example.countryinfo.common.Utility
-import com.example.countryinfo.model.Rows
+import com.example.countryinfo.model.ServerResponse
 import com.example.countryinfo.viewmodel.CountryInfoViewModel
 import com.example.newstest.R
 import kotlinx.android.synthetic.main.activity_country_info.*
@@ -57,7 +58,7 @@ class CountryInfoListActivity : AppCompatActivity() {
     }
 
     /**
-     * Fetch country info from server and bind it to recycler view's adapter
+     * Set observers on view model to listen to data download and populate recycler view adapter
      */
     private fun setViewModelObservers() {
 
@@ -67,24 +68,30 @@ class CountryInfoListActivity : AppCompatActivity() {
         countryInfoViewModel.init()
 
         // Observe CountryInfoViewModel live data to get title and country info from server
-        countryInfoViewModel.getCountryInfoList().observe(this, Observer<Pair<String, List<Rows>>> {
+        countryInfoViewModel.getData().observe(this, Observer<ServerResponse> {
+            serverResponse ->
 
-            if(it.second.isNotEmpty()) {
-                // Set the received data into list adapter
-                adapter?.setCountryInfoList(it.second)
+            when(serverResponse.status)
+            {
+                Status.SUCCESS -> {
+                    // Set the received data into list adapter
+                    adapter?.setCountryInfoList(serverResponse.successData?.rows!!)
 
-                // Change action bar title with the title from server
-                val actionBar = supportActionBar
-                actionBar?.title =
-                    if (!TextUtils.isEmpty(it.first)) it.first else getString(R.string.default_app_title)
+                    // Change action bar title with the title from server
+                    val actionBar = supportActionBar
+                    actionBar?.title =
+                        if (!TextUtils.isEmpty(serverResponse.successData?.title)) serverResponse.successData?.title else getString(R.string.default_app_title)
 
-                tv_empty_view.visibility = View.GONE
-                rv_country_info_list.visibility = View.VISIBLE
-            } else {
-                //Show no data view if no data is available
-                tv_empty_view.text = getString(R.string.list_no_data_available)
-                tv_empty_view.visibility = View.VISIBLE
-                rv_country_info_list.visibility = View.GONE
+                    tv_empty_view.visibility = View.GONE
+                    rv_country_info_list.visibility = View.VISIBLE
+                }
+                Status.ERROR -> {
+                    //Show no data view if no data is available
+                    tv_empty_view.text = getString(R.string.list_no_data_available)
+                    tv_empty_view.visibility = View.VISIBLE
+                    rv_country_info_list.visibility = View.GONE
+                }
+
             }
         })
 

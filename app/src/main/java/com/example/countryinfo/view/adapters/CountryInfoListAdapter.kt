@@ -37,7 +37,7 @@ class CountryInfoListAdapter : RecyclerView.Adapter<CountryInfoListAdapter.ViewH
 
     //list size
     override fun getItemCount(): Int {
-        return _articleList.size
+        return _articleList?.size
     }
 
     //the class is holding the list view and loads data into the list view
