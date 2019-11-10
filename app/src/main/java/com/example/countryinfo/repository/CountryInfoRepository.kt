@@ -2,7 +2,7 @@ package com.example.countryinfo.repository
 
 import android.util.Log
 import com.example.countryinfo.common.ServerConstants
-import com.example.countryinfo.model.CountryInfoBaseResponse
+import com.example.countryinfo.model.CountryInfoResponse
 import com.example.countryinfo.model.ServerResponse
 import com.example.countryinfo.repository.network.CountryInfoService
 import com.example.countryinfo.repository.network.ServerResponseBuilder
@@ -34,10 +34,10 @@ class CountryInfoRepository {
             .build()
         val service = retrofitClient.create(CountryInfoService::class.java)
         val call = service.getCountryInfoService()
-        call.enqueue(object : Callback<CountryInfoBaseResponse> {
+        call.enqueue(object : Callback<CountryInfoResponse> {
             override fun onResponse(
-                call: Call<CountryInfoBaseResponse>?,
-                response: Response<CountryInfoBaseResponse>?
+                call: Call<CountryInfoResponse>?,
+                response: Response<CountryInfoResponse>?
             ) {
                 val isSuccess = response!!.isSuccessful
                 if(isSuccess)
@@ -46,7 +46,7 @@ class CountryInfoRepository {
                 }
             }
 
-            override fun onFailure(call: Call<CountryInfoBaseResponse>?, t: Throwable?) {
+            override fun onFailure(call: Call<CountryInfoResponse>?, t: Throwable?) {
                 Log.d(tag, t?.message)
 
                 completionHandler(ServerResponseBuilder.create(t))

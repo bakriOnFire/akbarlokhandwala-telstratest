@@ -1,6 +1,6 @@
 package com.example.countryinfo.common
 
-enum class Status {
-    SUCCESS,
-    ERROR
+sealed class Status {
+    object Success: Status()
+    object Error: Status()
 }

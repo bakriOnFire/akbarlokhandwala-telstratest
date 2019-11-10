@@ -3,12 +3,13 @@ package com.example.countryinfo.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.countryinfo.model.Rows
 import com.example.countryinfo.model.ServerResponse
 import com.example.countryinfo.repository.CountryInfoRepository
 
 
-open class CountryInfoViewModel(application: Application): AndroidViewModel(application) {
+open class CountryInfoViewModel(): ViewModel() {
 
     private val serverResponse: MutableLiveData<ServerResponse> = MutableLiveData()
     private val countryInfoRepository = CountryInfoRepository()

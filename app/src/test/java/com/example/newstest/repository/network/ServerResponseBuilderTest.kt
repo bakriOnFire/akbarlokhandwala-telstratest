@@ -1,7 +1,7 @@
 package com.example.newstest.repository.network
 
 import com.example.countryinfo.common.Status
-import com.example.countryinfo.model.CountryInfoBaseResponse
+import com.example.countryinfo.model.CountryInfoResponse
 import com.example.countryinfo.model.ServerResponse
 import com.example.countryinfo.repository.network.ServerResponseBuilder
 import org.hamcrest.CoreMatchers.`is`
@@ -30,7 +30,7 @@ class ServerResponseBuilderTest {
     @Test
     fun success() {
         val successResponse: ServerResponse = ServerResponseBuilder
-            .create(Response.success(CountryInfoBaseResponse("About Canada", emptyList())))
+            .create(Response.success(CountryInfoResponse("About Canada", emptyList())))
 
 
         val status = successResponse.status.ordinal

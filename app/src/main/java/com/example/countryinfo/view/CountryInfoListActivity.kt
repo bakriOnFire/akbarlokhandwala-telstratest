@@ -73,7 +73,7 @@ class CountryInfoListActivity : AppCompatActivity() {
 
             when(serverResponse.status)
             {
-                Status.SUCCESS -> {
+                Status.Success -> {
                     // Set the received data into list adapter
                     adapter?.setCountryInfoList(serverResponse.successData?.rows!!)
 
@@ -85,7 +85,7 @@ class CountryInfoListActivity : AppCompatActivity() {
                     tv_empty_view.visibility = View.GONE
                     rv_country_info_list.visibility = View.VISIBLE
                 }
-                Status.ERROR -> {
+                Status.Error -> {
                     //Show no data view if no data is available
                     tv_empty_view.text = getString(R.string.list_no_data_available)
                     tv_empty_view.visibility = View.VISIBLE
