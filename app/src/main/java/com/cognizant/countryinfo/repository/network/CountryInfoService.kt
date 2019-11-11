@@ -1,6 +1,6 @@
-package com.example.countryinfo.repository.network
+package com.cognizant.countryinfo.repository.network
 
-import com.example.countryinfo.model.CountryInfoResponse
+import com.cognizant.countryinfo.model.CountryInfoResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

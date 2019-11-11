@@ -1,7 +1,6 @@
-package com.example.newstest.repository.network
+package com.cognizant.countryinfo.repository.network
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.countryinfo.repository.network.CountryInfoService
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.Okio

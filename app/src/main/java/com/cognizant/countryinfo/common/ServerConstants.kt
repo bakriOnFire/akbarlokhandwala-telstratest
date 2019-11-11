@@ -1,4 +1,4 @@
-package com.example.countryinfo.common
+package com.cognizant.countryinfo.common
 
 /**
  *

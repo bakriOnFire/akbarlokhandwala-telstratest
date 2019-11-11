@@ -1,9 +1,8 @@
-package com.example.newstest.repository.network
+package com.cognizant.countryinfo.repository.network
 
-import com.example.countryinfo.common.Status
-import com.example.countryinfo.model.CountryInfoResponse
-import com.example.countryinfo.model.ServerResponse
-import com.example.countryinfo.repository.network.ServerResponseBuilder
+import com.cognizant.countryinfo.common.Status
+import com.cognizant.countryinfo.model.CountryInfoResponse
+import com.cognizant.countryinfo.model.ServerResponse
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat

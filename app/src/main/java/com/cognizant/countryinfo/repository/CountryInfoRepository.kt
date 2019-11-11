@@ -1,11 +1,11 @@
-package com.example.countryinfo.repository
+package com.cognizant.countryinfo.repository
 
 import android.util.Log
-import com.example.countryinfo.common.ServerConstants
-import com.example.countryinfo.model.CountryInfoResponse
-import com.example.countryinfo.model.ServerResponse
-import com.example.countryinfo.repository.network.CountryInfoService
-import com.example.countryinfo.repository.network.ServerResponseBuilder
+import com.cognizant.countryinfo.common.ServerConstants
+import com.cognizant.countryinfo.model.CountryInfoResponse
+import com.cognizant.countryinfo.model.ServerResponse
+import com.cognizant.countryinfo.repository.network.CountryInfoService
+import com.cognizant.countryinfo.repository.network.ServerResponseBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,8 +41,8 @@ class CountryInfoRepository {
                 call: Call<CountryInfoResponse>?,
                 response: Response<CountryInfoResponse>?
             ) {
-                val isSuccess = response!!.isSuccessful
-                if(isSuccess)
+                val isSuccess = response?.isSuccessful
+                if(isSuccess != null  && isSuccess)
                 {
                     completionHandler(ServerResponseBuilder.create(response))
                 }

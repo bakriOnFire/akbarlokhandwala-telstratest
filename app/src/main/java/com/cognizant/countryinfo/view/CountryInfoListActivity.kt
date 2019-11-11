@@ -1,4 +1,4 @@
-package com.example.countryinfo.view
+package com.cognizant.countryinfo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,12 +7,12 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.countryinfo.common.Status
-import com.example.countryinfo.view.adapters.CountryInfoListAdapter
-import com.example.countryinfo.common.Utility
-import com.example.countryinfo.model.ServerResponse
-import com.example.countryinfo.viewmodel.CountryInfoViewModel
-import com.example.newstest.R
+import com.cognizant.countryinfo.common.Status
+import com.cognizant.countryinfo.view.adapters.CountryInfoListAdapter
+import com.cognizant.countryinfo.common.Utility
+import com.cognizant.countryinfo.model.ServerResponse
+import com.cognizant.countryinfo.viewmodel.CountryInfoViewModel
+import com.cognizant.countryinfo.R
 import kotlinx.android.synthetic.main.activity_country_info.*
 
 /**

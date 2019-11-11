@@ -1,4 +1,4 @@
-package com.example.countryinfo.view.adapters
+package com.cognizant.countryinfo.view.adapters
 
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.newstest.R
-import com.example.countryinfo.model.Rows
+import com.cognizant.countryinfo.R
+import com.cognizant.countryinfo.model.Rows
 import kotlinx.android.synthetic.main.list_item.view.*
 
 /**

@@ -1,5 +1,5 @@
-package com.example.countryinfo.model
+package com.cognizant.countryinfo.model
 
-import com.example.countryinfo.common.Status
+import com.cognizant.countryinfo.common.Status
 
 data class ServerResponse(val status: Status, val successData: CountryInfoResponse?, val errorData: Throwable?, val message: String?)

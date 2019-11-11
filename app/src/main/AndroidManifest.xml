@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.newstest">
+          package="com.cognizant.countryinfo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -14,7 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
     >
-        <activity android:name="com.example.countryinfo.view.CountryInfoListActivity">
+        <activity android:name="com.cognizant.countryinfo.view.CountryInfoListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

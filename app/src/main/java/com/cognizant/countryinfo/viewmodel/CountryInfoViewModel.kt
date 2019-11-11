@@ -1,12 +1,9 @@
-package com.example.countryinfo.viewmodel
+package com.cognizant.countryinfo.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.countryinfo.model.Rows
-import com.example.countryinfo.model.ServerResponse
-import com.example.countryinfo.repository.CountryInfoRepository
+import com.cognizant.countryinfo.model.ServerResponse
+import com.cognizant.countryinfo.repository.CountryInfoRepository
 
 
 open class CountryInfoViewModel(): ViewModel() {

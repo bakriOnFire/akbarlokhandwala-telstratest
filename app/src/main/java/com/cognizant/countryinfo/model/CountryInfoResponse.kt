@@ -1,4 +1,4 @@
-package com.example.countryinfo.model
+package com.cognizant.countryinfo.model
 
 import com.google.gson.annotations.SerializedName
 
